@@ -15,8 +15,6 @@
     View.prototype.bindEvents = function () {
         var that = this;
         this.$el.on('click', '.peg', function (event) {
-            console.log(that.$twr1);
-
             if (that.$twr1 === undefined) {
 
                 that.$twr1 = $(event.currentTarget);
@@ -25,10 +23,11 @@
                 delete that.$twr1;
             }
         });
+
+        $('.play-again').on('click', this.restartGame.bind(this));
     };
 
     View.prototype.clickTower = function ($twr1, $twr2) {
-        console.log($twr2);
         var status = this.game.move($twr1.data("idx"), $twr2.data("idx"));
         if (status === false) {
             alert("Invalid move!");
@@ -36,6 +35,7 @@
             this.render();
             if (this.game.isWon()) {
                 alert("You win!!");
+                $('.play-again').show();
             }
         }
     };
@@ -57,5 +57,9 @@
             }
             this.$el.append($peg);
         }
+    };
+
+    View.prototype.restartGame = function () {
+      location.reload();
     };
 })();

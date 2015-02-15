@@ -50,3 +50,17 @@ h1 {
     background-color: blue;
     width: 50px;
 }
+
+.group:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.play-again {
+    height: 30px;
+    width: 78px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
