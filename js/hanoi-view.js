@@ -6,6 +6,7 @@
     var View = Hanoi.View = function (game, $el) {
         this.game = game;
         this.$el = $el;
+        this.moves = 0;
         this.render();
         this.bindEvents();
     };
@@ -32,6 +33,7 @@
         if (status === false) {
             alert("Invalid move!");
         } else {
+            this.moves += 1;
             this.render();
             if (this.game.isWon()) {
                 alert("You win!!");
@@ -41,7 +43,7 @@
     };
 
     View.prototype.render = function () {
-        $(".peg").remove();
+        this.$el.empty();
         for (var i = 0; i < View.NUM_PEGS; i++) {
             var $peg = $("<div class='peg'>");
             $peg.data("idx", i );
@@ -57,6 +59,10 @@
             }
             this.$el.append($peg);
         }
+
+        var $p = ("<p class='moves'>Moves:" + this.moves + "</p>");
+        this.$el.append('<br>');
+        this.$el.append($p);
     };
 
     View.prototype.restartGame = function () {

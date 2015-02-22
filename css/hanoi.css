@@ -57,6 +57,13 @@ h1 {
     clear: both;
 }
 
+.moves {
+    font-family: Verdana, Geneva, sans-serif;
+    position: absolute;
+    margin-left: 35px;
+    margin-top: 155px;
+}
+
 .play-again {
     height: 30px;
     width: 78px;
